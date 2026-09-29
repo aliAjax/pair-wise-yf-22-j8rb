@@ -1,1 +1,9 @@
-package com.generated.qualityTrace.repositories; import java.util.*; import org.springframework.stereotype.Repository; @Repository public class ProductBatchRepository { public List<Map<String,Object>> findAll(){ return List.of(Map.of("id",1,"name","产品批次","status","READY")); } }
+package com.generated.qualityTrace.repositories;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.generated.qualityTrace.models.ProductBatch;
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface ProductBatchRepository extends BaseMapper<ProductBatch> {
+}
