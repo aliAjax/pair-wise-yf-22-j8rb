@@ -31,14 +31,17 @@ services:
       DB_NAME: ${DB_NAME:-app_db}
       DB_USER: ${DB_USER:-app_user}
       DB_PASSWORD: ${DB_PASSWORD:-app_password}
-      JWT_SECRET: local-dev-secret
+      JWT_SECRET: ${JWT_SECRET:-local-dev-secret-please-change}
+      JWT_TTL_SECONDS: ${JWT_TTL_SECONDS:-28800}
+      RATE_LIMIT_PER_MINUTE: ${RATE_LIMIT_PER_MINUTE:-300}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
     ports:
       - "${BACKEND_PORT:-21114}:8080"
     depends_on:
       db:
         condition: service_healthy
     healthcheck:
-      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/health || exit 1"]
+      test: ["CMD-SHELL", "wget -q -O - http://localhost:8080/health | grep -q '\"status\":\"ok\"'"]
       interval: 10s
       timeout: 5s
       retries: 10

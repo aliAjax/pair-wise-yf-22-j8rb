@@ -1,1 +1,7 @@
-package com.generated.qualityTrace.constants; public enum DefectSeverity { MINOR, MAJOR, CRITICAL }
+package com.generated.qualityTrace.constants;
+
+public enum DefectSeverity {
+  MINOR,
+  MAJOR,
+  CRITICAL
+}
